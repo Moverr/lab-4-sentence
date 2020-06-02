@@ -43,8 +43,7 @@ public class Controller {
         if (list != null && list.size() > 0) {
             URI uri = list.get(0).getUri();
             if (uri != null) {
-                String st =  (new RestTemplate()).getForObject(uri, String.class);
-                
+                String st =  (new RestTemplate()).getForObject(uri, String.class);                
                 return st;
             }
         }
