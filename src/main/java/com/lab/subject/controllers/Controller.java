@@ -27,13 +27,15 @@ public class Controller {
     DiscoveryClient client;
 
     @GetMapping("/sentence")
-    public @ResponseBody
-    String getSentence() {
-        return getWord("LAB-4-SUBJECT") + " "
+    public @ResponseBody   String getSentence() {
+        
+        String response =  getWord("LAB-4-SUBJECT") + " "
                 + getWord("LAB-4-VERB") + " "
                 + getWord("LAB-4-ARTICLE") + " "
                 + getWord("LAB-4-ADJECTIVE") + " "
                 + getWord("LAB-4-NOUN") + ".";
+        
+        return response;
     }
 
     private String getWord(String service) {
@@ -41,7 +43,9 @@ public class Controller {
         if (list != null && list.size() > 0) {
             URI uri = list.get(0).getUri();
             if (uri != null) {
-                return (new RestTemplate()).getForObject(uri, String.class);
+                String st =  (new RestTemplate()).getForObject(uri, String.class);
+                
+                return st;
             }
         }
         return null;
