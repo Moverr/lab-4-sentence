@@ -5,10 +5,15 @@
  */
 package com.lab.subject.controllers;
 
-import org.springframework.beans.factory.annotation.Value;
+import java.net.URI;
+import java.util.List;
+import static org.bouncycastle.crypto.tls.ConnectionEnd.client;
+ 
+import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 /**
  *
@@ -16,15 +21,22 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class Controller {
+ 
+    @GetMapping("/sentence")
+    public @ResponseBody String getSentence() {
+    return 
+      getWord("LAB-4-SUBJECT") + " "
+      + getWord("LAB-4-VERB") + " "
+      + getWord("LAB-4-ARTICLE") + " "
+      + getWord("LAB-4-ADJECTIVE") + " "
+      + getWord("LAB-4-NOUN") + "."
+      ;
+  }
 
-    @Value("${words}")
-    String words;
-
-    @GetMapping("/")
-    public @ResponseBody
-    String getWord() {
-        String[] wordArray = words.split(",");
-        int i = (int) Math.round(Math.random() * (wordArray.length - 1));
-        return wordArray[i];
+    private String getWord(String service) {
+        
+        return null;
     }
+  
+    
 }
