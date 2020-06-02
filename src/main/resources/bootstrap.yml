@@ -2,8 +2,7 @@ eureka:
     client:
         serviceUrl:
             defaultZone: http://localhost:8010/eureka/
-            
-words: boat,book,vote,seat,backpack,partition,groundhog
+ 
 spring:
     application:
-        name: lab-4-noun
+        name: lab-4-sentence
