@@ -11,7 +11,7 @@
 	<groupId>com.lab.eureka.server</groupId>
 	<artifactId>lab-4-eureka-server</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>lab-4-noun</name>
+	<name>lab-4-sentence</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
