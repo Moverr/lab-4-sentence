@@ -18,5 +18,5 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public interface Lab4Adjective {
     
     @RequestMapping(method=RequestMethod.GET,value = "/")
-    String getVerb();
+    String getAdjective();
 }

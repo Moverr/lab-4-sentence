@@ -63,15 +63,15 @@ public class Controller {
 
         switch (service) {
             case "LAB-4-SUBJECT":
-                return lab_subject.getVerb();
+                return lab_subject.getSubject();
             case "LAB-4-VERB":
                 return lab_verb.getVerb();
             case "LAB-4-ARTICLE":
-                return lab_article.getVerb();
+                return lab_article.getArticle();
             case "LAB-4-ADJECTIVE":
-                return lab_adjective.getVerb();
+                return lab_adjective.getAdjective();
             case "LAB-4-NOUN":
-                return lab_noun.getVerb();
+                return lab_noun.getNoun();
             default:
                 /* List<ServiceInstance> list = client.getInstances(service);
                  if (list != null && list.size() > 0) {
