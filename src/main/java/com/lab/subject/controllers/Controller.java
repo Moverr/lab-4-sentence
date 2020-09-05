@@ -5,6 +5,7 @@
  */
 package com.lab.subject.controllers;
 
+import com.lab.subject.feign.Lab4subject;
 import java.net.URI;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,27 +27,38 @@ public class Controller {
     @Autowired
     DiscoveryClient client;
 
+    @Autowired
+    Lab4subject lab_subject;
+
     @GetMapping("/sentence")
-    public @ResponseBody   String getSentence() {
-        
-        String response =  getWord("LAB-4-SUBJECT") + " "
+    public @ResponseBody
+    String getSentence() {
+
+        String response = getWord("LAB-4-SUBJECT") + " "
                 + getWord("LAB-4-VERB") + " "
                 + getWord("LAB-4-ARTICLE") + " "
                 + getWord("LAB-4-ADJECTIVE") + " "
                 + getWord("LAB-4-NOUN") + ".";
-        
+
         return response;
     }
 
     private String getWord(String service) {
-        List<ServiceInstance> list = client.getInstances(service);
-        if (list != null && list.size() > 0) {
-            URI uri = list.get(0).getUri();
-            if (uri != null) {
-                String st =  (new RestTemplate()).getForObject(uri, String.class);                
-                return st;
-            }
+
+        switch (service) {
+            case "LAB-4-SUBJECT":
+                return lab_subject.getVerb();
+            default:
+                List<ServiceInstance> list = client.getInstances(service);
+                if (list != null && list.size() > 0) {
+                    URI uri = list.get(0).getUri();
+                    if (uri != null) {
+                        String st = (new RestTemplate()).getForObject(uri, String.class);
+                        return st;
+                    }
+                }
         }
+
         return null;
     }
 
